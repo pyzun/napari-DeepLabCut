@@ -1,24 +1,24 @@
 # Napari + DeepLabCut Annotation Tool
 
-Welcome! This is an **alpha** release of a napari-based GUI for fast and interactive annotation of images with DeepLabCut. 
+Welcome! This is an **alpha** release of a napari-based GUI for fast and interactive annotation of images with DeepLabCut.
 
-It allows you to load images from a DLC project, annotate, and saves back into the proper spot in your DLC project folder. 
+It allows you to load images from a DLC project, annotate, and saves back into the proper spot in your DLC project folder.
 
 ## Use cases:
 
--  You should have DeepLabCut installed (see https://deeplabcut.github.io/DeepLabCut/docs/intro.html)
--  This GUI can be used as an alternative for the [(D) Labeling Frames GUI within DeepLabCut](https://deeplabcut.github.io/DeepLabCut/docs/standardDeepLabCut_UserGuide.html#d-label-frames) or the [(K) Refine Label GUI](https://deeplabcut.github.io/DeepLabCut/docs/standardDeepLabCut_UserGuide.html#k-refine-labels-augmentation-of-the-training-dataset).
--  In other words, complete steps A-C (from [here](https://deeplabcut.github.io/DeepLabCut/docs/standardDeepLabCut_UserGuide.html)) within DeepLabCut, then you can start labeling with this GUI, or re-start labeling with this GUI. You can also use this GUI for refinement of labels.
+- You should have DeepLabCut installed (see https://deeplabcut.github.io/DeepLabCut/docs/intro.html)
+- This GUI can be used as an alternative for the [(D) Labeling Frames GUI within DeepLabCut](https://deeplabcut.github.io/DeepLabCut/docs/standardDeepLabCut_UserGuide.html#d-label-frames) or the [(K) Refine Label GUI](https://deeplabcut.github.io/DeepLabCut/docs/standardDeepLabCut_UserGuide.html#k-refine-labels-augmentation-of-the-training-dataset).
+- In other words, complete steps A-C (from [here](https://deeplabcut.github.io/DeepLabCut/docs/standardDeepLabCut_UserGuide.html)) within DeepLabCut, then you can start labeling with this GUI, or re-start labeling with this GUI. You can also use this GUI for refinement of labels.
 
-## Feedback welcome! 
+## Feedback welcome!
 
--  We are working on a [napari plug-in](https://napari.org/plugins/stable/) for annotation that will ultimately replace this, but in the meantime you can already use this alpha-version as a stand-alone GUI.
--  Please note, this GUI will not be developed further as a stand-alone, but we are open-sourcing it to get community feedback, which we will consider for the plugin. *If you have a feature request or comment, please open an issue!*
-
+- We are working on a [napari plug-in](https://napari.org/plugins/stable/) for annotation that will ultimately replace this, but in the meantime you can already use this alpha-version as a stand-alone GUI.
+- Please note, this GUI will not be developed further as a stand-alone, but we are open-sourcing it to get community feedback, which we will consider for the plugin. *If you have a feature request or comment, please open an issue!*
 
 ## Installation Instructions:
 
 - Open the terminal (and consider what directory you are in) and run the following, which will clone the repository locally and install all required packages:
+
 ```sh
 git clone --single-branch https://github.com/DeepLabCut/DeepLabCut-label.git
 cd DeepLabCut-label
@@ -28,25 +28,27 @@ conda activate dlclabel
 
 ## Open GUI & Usage:
 
-```
-ipython (or pythonw for macOS users)
+```python
+ipython # (or pythonw for macOS users)
 import dlclabel
 dlclabel.show()
 ```
-All accepted files (config.yaml, images, data files, list of polygon vertices) can be loaded 
+
+All accepted files (config.yaml, images, data files, list of polygon vertices) can be loaded
 either by dropping them directly onto the canvas or via the File menu.
 
-The easiest way to get started is to drop a folder (typically a folder from within a DeepLabCut' projects `labeled-data` directory), and, if labeling from scratch, drop the corresponding `config.yaml` to automatically add a` KeyPoints layer` and populate the dropdown menus.
+The easiest way to get started is to drop a folder (typically a folder from within a DeepLabCut' projects `labeled-data` directory), and, if labeling from scratch, drop the corresponding `config.yaml` to automatically add a `KeyPoints layer` and populate the dropdown menus.
 
 **Tools & shortcuts are:**
 
-- `P` and `S`, to easily switch between labeling and selection mode
+- `1` and `2`, to go to the previous and next keypoint, respectively
+- `W` and `S`, to easily switch between labeling and selection mode
 - `M`, to cycle through regular (sequential), quick, and cycle annotation mode (see the description [here](https://github.com/DeepLabCut/DeepLabCut-label/blob/ee71b0e15018228c98db3b88769e8a8f4e2c0454/dlclabel/layers.py#L9-L19))
 - `Z`, to enable pan & zoom (which is achieved using the mouse wheel or finger scrolling on the Trackpad)
 - `E`, to enable edge coloring (by default, if using this in refinement GUI mode, points with a confidence lower than 0.6 are marked
 in red)
 - `F`, to toggle between animal and bodypart color scheme. 
-- `backspace` to delete a point.
+- `X` to delete a point.
 - Check the box "display text" to show the label names on the canvas.
 - To move to another folder, be sure to save (Ctrl+S), then delete the layers, and re-drag/drop the next folder.
 
