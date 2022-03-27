@@ -87,6 +87,15 @@ class KeyPoints(Points):
             blending=blending,
             visible=visible,
         )
+        # XXX: My keybindings
+        from napari.layers.points import _points_key_bindings
+        # 'W' is already in use (what is it for?), so set `overwrite=True`
+        Points.bind_key('W', overwrite=True)(_points_key_bindings.activate_add_mode)
+
+        # 'X' is already in use (what is it for?), so set `overwrite=True`
+        Points.bind_key('X', overwrite=True)(_points_key_bindings.delete_selected)
+        # XXX: End
+
         self.class_keymap.update(super(KeyPoints, self).class_keymap)
         self._all_keypoints = []
         self._label_mode = LabelMode.default()

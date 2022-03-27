@@ -115,6 +115,11 @@ class DLCViewer(napari.Viewer):
                 layer.smart_reset(event=None)  # Update current keypoint upon loading data
                 self.bind_key("Down", layer.next_keypoint, overwrite=True)
                 self.bind_key("Up", layer.prev_keypoint, overwrite=True)
+
+                # XXX: My keybindings:
+                self.bind_key("2", layer.next_keypoint, overwrite=True)
+                self.bind_key("1", layer.prev_keypoint, overwrite=True)
+
         elif event.type == "removed":
             layer = event.item
             if isinstance(layer, KeyPoints):
